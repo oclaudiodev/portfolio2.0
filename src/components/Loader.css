@@ -1,0 +1,97 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: none;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.loader--exit {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 320px;
+}
+
+/* LOGO */
+.loader-logo {
+  font-family: var(--font-head);
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+.loader-bracket { color: var(--pink); }
+
+.loader-cs {
+  color: var(--cyan);
+  text-shadow: 0 0 30px rgba(0, 255, 229, 0.6);
+}
+
+@keyframes pulse-glow {
+  0%, 100% { text-shadow: 0 0 20px rgba(0, 255, 229, 0.4); }
+  50%       { text-shadow: 0 0 50px rgba(0, 255, 229, 0.9); }
+}
+
+/* BAR */
+.loader-bar-wrap {
+  width: 100%;
+  height: 2px;
+  background: var(--border2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.loader-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--cyan), var(--pink));
+  border-radius: 2px;
+  transition: width 0.35s ease;
+  box-shadow: 0 0 10px var(--cyan);
+}
+
+/* LINES */
+.loader-lines {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-height: 120px;
+}
+
+.loader-line {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text3);
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+
+.loader-line--active {
+  color: var(--cyan);
+}
+
+.loader-prefix {
+  color: var(--pink);
+  margin-right: 0.4rem;
+}
+
+/* PERCENTAGE */
+.loader-pct {
+  font-family: var(--font-head);
+  font-size: 0.8rem;
+  color: var(--text2);
+  letter-spacing: 0.15em;
+  align-self: flex-end;
+}

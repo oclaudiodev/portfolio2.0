@@ -1,0 +1,78 @@
+* { cursor: none !important; }
+
+.cursor-dot {
+  position: fixed;
+  top: -4px;
+  left: -4px;
+  width: 8px;
+  height: 8px;
+  background: var(--cyan);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  box-shadow: 0 0 8px var(--cyan);
+  transition: width 0.2s, height 0.2s, background 0.2s, top 0.2s, left 0.2s;
+  will-change: transform;
+}
+
+.cursor-ring {
+  position: fixed;
+  top: -16px;
+  left: -16px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(0, 255, 229, 0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transition: width 0.2s, height 0.2s, border-color 0.2s, top 0.2s, left 0.2s;
+  will-change: transform;
+}
+
+/* HOVER em links/botões */
+.cursor-dot.cursor--hover {
+  width: 12px;
+  height: 12px;
+  top: -6px;
+  left: -6px;
+  background: var(--pink);
+  box-shadow: 0 0 12px var(--pink);
+}
+
+.cursor-ring.cursor--hover {
+  width: 44px;
+  height: 44px;
+  top: -22px;
+  left: -22px;
+  border-color: rgba(255, 45, 120, 0.5);
+}
+
+/* CLICK */
+.cursor-dot.cursor--click {
+  width: 6px;
+  height: 6px;
+  top: -3px;
+  left: -3px;
+  background: var(--yellow);
+  box-shadow: 0 0 10px var(--yellow);
+}
+
+.cursor-ring.cursor--click {
+  width: 20px;
+  height: 20px;
+  top: -10px;
+  left: -10px;
+  border-color: var(--yellow);
+}
+.toast {
+  pointer-events: all !important;
+}
+
+.cursor-dot  { z-index: 99998; }
+.cursor-ring { z-index: 99997; }
+
+/* Esconde no mobile */
+@media (max-width: 900px) {
+  * { cursor: auto !important; }
+  .cursor-dot, .cursor-ring { display: none; }
+}

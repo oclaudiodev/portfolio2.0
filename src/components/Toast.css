@@ -1,0 +1,115 @@
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+  min-width: 320px;
+  max-width: 420px;
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s;
+  pointer-events: none;
+}
+
+.toast--visible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+.toast--success { border-color: rgba(0, 255, 229, 0.3); }
+.toast--error   { border-color: rgba(255, 45, 120, 0.3); }
+
+/* BAR */
+.toast-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  border-radius: 0 0 4px 4px;
+  animation: toast-shrink 4s linear forwards;
+}
+
+.toast--success .toast-bar { background: var(--cyan); }
+.toast--error   .toast-bar { background: var(--pink); }
+
+@keyframes toast-shrink {
+  from { width: 100%; }
+  to   { width: 0%; }
+}
+
+/* ICON */
+.toast-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.toast--success .toast-icon {
+  background: rgba(0, 255, 229, 0.1);
+  color: var(--cyan);
+  border: 1px solid rgba(0, 255, 229, 0.3);
+}
+
+.toast--error .toast-icon {
+  background: rgba(255, 45, 120, 0.1);
+  color: var(--pink);
+  border: 1px solid rgba(255, 45, 120, 0.3);
+}
+
+/* CONTENT */
+.toast-content { flex: 1; }
+
+.toast-title {
+  font-family: var(--font-head);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.15rem;
+}
+
+.toast-sub {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text2);
+  letter-spacing: 0.05em;
+}
+
+/* CLOSE */
+.toast-close {
+  background: none;
+  border: none;
+  color: var(--text3);
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 0.2rem;
+  transition: color 0.2s;
+  flex-shrink: 0;
+}
+.toast,
+.toast * {
+  cursor: pointer !important;
+}
+
+.toast-close:hover { color: var(--text); }
+
+@media (max-width: 600px) {
+  .toast {
+    min-width: unset;
+    width: calc(100vw - 3rem);
+    bottom: 1.5rem;
+  }
+}

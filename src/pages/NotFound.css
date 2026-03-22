@@ -1,0 +1,115 @@
+.not-found {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.nf-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.nf-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.nf-code {
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.nf-404 {
+  font-family: var(--font-head);
+  font-size: clamp(6rem, 20vw, 12rem);
+  font-weight: 900;
+  color: var(--cyan);
+  text-shadow:
+    0 0 40px rgba(0, 255, 229, 0.5),
+    0 0 80px rgba(0, 255, 229, 0.2);
+  letter-spacing: -0.05em;
+}
+
+.nf-role {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--text2);
+  letter-spacing: 0.05em;
+}
+
+.nf-cursor { color: var(--pink); margin-right: 0.4rem; }
+.nf-typed  { color: var(--cyan); }
+.nf-blink  { color: var(--cyan); animation: blink 1s step-end infinite; }
+
+.nf-desc {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text2);
+  line-height: 1.8;
+  max-width: 400px;
+}
+
+/* TERMINAL */
+.nf-terminal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 420px;
+  text-align: left;
+}
+
+.nf-terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1rem;
+  background: var(--bg3);
+  border-bottom: 1px solid var(--border2);
+}
+
+.nf-terminal-title {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text2);
+  margin-left: auto;
+  letter-spacing: 0.05em;
+}
+
+.nf-terminal-body {
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.nf-terminal-body p {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text2);
+}
+
+.nf-err  { color: var(--pink);   margin-right: 0.5rem; font-weight: 700; }
+.nf-warn { color: var(--yellow); margin-right: 0.5rem; font-weight: 700; }
+.nf-ok   { color: var(--cyan);   margin-right: 0.5rem; font-weight: 700; }
+
+.nf-btn {
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .nf-404 { font-size: 8rem; }
+}

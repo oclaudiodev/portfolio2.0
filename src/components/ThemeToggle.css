@@ -1,0 +1,16 @@
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 1rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  line-height: 1;
+}
+
+.theme-toggle:hover {
+  border-color: var(--cyan);
+  box-shadow: 0 0 12px rgba(0, 255, 229, 0.2);
+}
