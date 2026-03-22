@@ -99,7 +99,7 @@ export default function Hero() {
           <div className={cx("hero-btns")} style={{ animationDelay: "0.9s" }}>
             <a href="#projects" className="btn-neon">VER PROJETOS</a>
             <a href="#contact" className="btn-ghost">CONTATO</a>
-            <a href="/curriculo.pdf" download="Claudio_Souza_CV.pdf" className="btn-cv">
+            <a href="/JoséClaudio_curriculo.pdf" download="Claudio_Souza_CV.pdf" className="btn-cv">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                 <polyline points="7 10 12 15 17 10"/>
