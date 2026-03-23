@@ -7,6 +7,7 @@ export default function ProjectCard({ id, title, tag, desc, video, poster, githu
   const modalRef = useRef(null);
   const [hovered, setHovered] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const [imgLoaded,  setImgLoaded]  = useState(false);
 
   const handleEnter = () => { setHovered(true); cardRef.current?.play(); };
   const handleLeave = () => {
@@ -23,18 +24,32 @@ export default function ProjectCard({ id, title, tag, desc, video, poster, githu
   return (
     <>
       <div
-        className={`project-card ${hovered ? "project-card--hovered" : ""}`}
+        className={"project-card" + (hovered ? " project-card--hovered" : "")}
         style={{ "--c": color }}
         onMouseEnter={handleEnter}
         onMouseLeave={handleLeave}
       >
         <div className="pc-top-bar">
           <span className="pc-dot" /><span className="pc-dot" /><span className="pc-dot" />
-          <span className="pc-id">PROJECT_{String(id).padStart(2, "0")}</span>
+          <span className="pc-id">{"PROJECT_" + String(id).padStart(2, "0")}</span>
         </div>
 
         <div className="pc-media" onClick={openModal}>
-          <video ref={cardRef} src={video} poster={poster} muted loop preload="none" playsInline />
+          {/* SKELETON */}
+          {!imgLoaded && <div className="pc-skeleton" />}
+
+          <video
+            ref={cardRef}
+            src={video}
+            poster={poster}
+            muted
+            loop
+            preload="none"
+            playsInline
+            onLoadedData={() => setImgLoaded(true)}
+            style={{ opacity: imgLoaded ? 1 : 0, transition: "opacity 0.3s" }}
+          />
+
           <div className="pc-media-overlay">
             <span className="pc-play-hint">HOVER TO PREVIEW</span>
           </div>
@@ -60,7 +75,6 @@ export default function ProjectCard({ id, title, tag, desc, video, poster, githu
         </div>
       </div>
 
-      {/* MODAL via Portal — renderiza direto no body */}
       {modalOpen && createPortal(
         <div className="video-modal-backdrop" onClick={closeModal}>
           <div className="video-modal" onClick={(e) => e.stopPropagation()}>

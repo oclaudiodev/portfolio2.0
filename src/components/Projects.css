@@ -21,3 +21,27 @@
     width: 100%;
   }
 }
+
+.projects-carousel {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .projects-grid    { display: none; }
+  .projects-carousel {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    cursor: grab;
+    padding-bottom: 1rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .projects-carousel::-webkit-scrollbar { display: none; }
+
+  .carousel-item {
+    flex: 0 0 85vw;
+    scroll-snap-align: center;
+  }
+}

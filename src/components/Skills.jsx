@@ -24,6 +24,7 @@ export default function Skills() {
                 <Icon className="skill-icon" style={{ color: s.color }} />
                 <span className="skill-name">{s.name}</span>
                 <div className="skill-glow" />
+                <div className="skill-tooltip">{s.name}</div>
               </div>
             );
           })}

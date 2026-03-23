@@ -387,3 +387,58 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
 }
+
+.section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.presenting .cyber-bg    { display: none; }
+.presenting .cyber-nav   { display: none; }
+.presenting .cyber-footer { display: none; }
+.presenting .scroll-top  { display: none; }
+
+.btn-present {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text2);
+  padding: 0.4rem 0.7rem;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.btn-present:hover {
+  color: var(--cyan);
+  border-color: var(--cyan);
+}
+
+.btn-exit-present {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9999;
+  background: var(--pink);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  font-family: var(--font-head);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  border-radius: 2px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255, 45, 120, 0.4);
+  transition: box-shadow 0.2s;
+}
+
+.btn-exit-present:hover {
+  box-shadow: 0 0 35px rgba(255, 45, 120, 0.6);
+}

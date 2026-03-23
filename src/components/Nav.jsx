@@ -8,6 +8,17 @@ export default function Nav({ active, extra }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = () => setMenuOpen(false);
 
+  const getNavIcon = (link) => {
+  const icons = {
+    hero:         "⌂",
+    about:        "◈",
+    skills:       "◎",
+    projects:     "▦",
+    certificates: "✦",
+    contact:      "✉",
+  };
+  return icons[link] || "●";
+};
   return (
     <>
       <nav className="cyber-nav">
@@ -60,6 +71,20 @@ export default function Nav({ active, extra }) {
       </div>
 
       {menuOpen && <div className="mobile-backdrop" onClick={closeMenu} />}
+      {/* BOTTOM NAV MOBILE */}
+      <div className="bottom-nav">
+        {NAV_LINKS.map((l) => (
+          <a
+            key={l}
+            href={"#" + l}
+            className={"bottom-nav-link" + (active === l ? " bottom-nav-link--active" : "")}
+            onClick={closeMenu}
+          >
+            <span className="bottom-nav-icon">{getNavIcon(l)}</span>
+            <span className="bottom-nav-label">{l}</span>
+          </a>
+        ))}
+      </div>
     </>
   );
 }

@@ -1,12 +1,19 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 import GlitchText from "./GlitchText";
-import Particles from "./Particles";
+import Particles  from "./Particles";
 import "./Hero.css";
 
 const STATS = [
-  { n: 4,  suffix: "",  label: "Projetos"    },
-  { n: 12, suffix: "+", label: "Tecnologias" },
-  { n: 2,  suffix: "+", label: "Anos"        },
+  { n: 9,  suffix: "",  label: "Projetos"    },
+  { n: 10, suffix: "+", label: "Tecnologias" },
+  { n: 1,  suffix: "+", label: "Anos"        },
+];
+
+const ROLES = [
+  "Desenvolvedor Full Stack",
+  "Back-end Developer",
+  "React Developer",
+  "Node.js Developer",
 ];
 
 function Counter({ to, suffix = "", duration = 1000 }) {
@@ -28,27 +35,39 @@ function Counter({ to, suffix = "", duration = 1000 }) {
 }
 
 export default function Hero() {
-  const [typed,   setTyped]   = useState("");
-  const [counted, setCounted] = useState(false);
-  const [ready,   setReady]   = useState(false);
-  const statsRef              = useRef(null);
-  const full                  = "Desenvolvedor Full Stack";
+  const [typed,      setTyped]      = useState("");
+  const [deleting,   setDeleting]   = useState(false);
+  const [roleIndex,  setRoleIndex]  = useState(0);
+  const [counted,    setCounted]    = useState(false);
+  const [ready,      setReady]      = useState(false);
+  const statsRef                    = useRef(null);
 
+  // ready para animações
   useEffect(() => {
     const t = setTimeout(() => setReady(true), 100);
     return () => clearTimeout(t);
   }, []);
 
+  // efeito de digitação alternando roles
   useEffect(() => {
-    let i = 0;
-    const t = setInterval(() => {
-      setTyped(full.slice(0, i));
-      i++;
-      if (i > full.length) clearInterval(t);
-    }, 60);
-    return () => clearInterval(t);
-  }, []);
+    const current = ROLES[roleIndex];
+    let timeout;
 
+    if (!deleting && typed.length < current.length) {
+      timeout = setTimeout(() => setTyped(current.slice(0, typed.length + 1)), 80);
+    } else if (!deleting && typed.length === current.length) {
+      timeout = setTimeout(() => setDeleting(true), 2000);
+    } else if (deleting && typed.length > 0) {
+      timeout = setTimeout(() => setTyped(current.slice(0, typed.length - 1)), 40);
+    } else if (deleting && typed.length === 0) {
+      setDeleting(false);
+      setRoleIndex((i) => (i + 1) % ROLES.length);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [typed, deleting, roleIndex]);
+
+  // contador animado
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -62,7 +81,7 @@ export default function Hero() {
     return () => observer.disconnect();
   }, [counted]);
 
-  const cx = (base) => `${base} animate ${ready ? "ready" : ""}`;
+  const cx = (base) => base + " animate" + (ready ? " ready" : "");
 
   return (
     <section id="hero" className="hero">
@@ -98,8 +117,11 @@ export default function Hero() {
 
           <div className={cx("hero-btns")} style={{ animationDelay: "0.9s" }}>
             <a href="#projects" className="btn-neon">VER PROJETOS</a>
-            <a href="#contact" className="btn-ghost">CONTATO</a>
-            <a href="/JoséClaudio_curriculo.pdf" download="Claudio_Souza_CV.pdf" className="btn-cv">
+            <a
+              href="/JoséClaudio_curriculo.pdf"
+              download="JoséClaudio_curriculo.pdf"
+              className="btn-cv"
+            >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                 <polyline points="7 10 12 15 17 10"/>
@@ -117,7 +139,7 @@ export default function Hero() {
             {STATS.map(({ n, suffix, label }) => (
               <div key={label} className="stat">
                 <span className="stat-n">
-                  {counted ? <Counter to={n} suffix={suffix} /> : `0${suffix}`}
+                  {counted ? <Counter to={n} suffix={suffix} /> : "0" + suffix}
                 </span>
                 <span className="stat-l">{label}</span>
               </div>

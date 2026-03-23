@@ -15,35 +15,62 @@ import "./styles/global.css";
 
 function App({ dark, toggleTheme }) {
   const [active, setActive] = useState("hero");
+  const [presenting, setPresenting] = useState(false);
+
+useEffect(() => {
+  const handleKey = (e) => {
+    if (e.key === "F9") setPresenting((p) => !p);
+  };
+  window.addEventListener("keydown", handleKey);
+  return () => window.removeEventListener("keydown", handleKey);
+}, []);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) setActive(e.target.id);
-        });
-      },
-      { threshold: 0.2, rootMargin: "-60px 0px -50% 0px" }
-    );
-    document.querySelectorAll("section[id]").forEach((s) => observer.observe(s));
-    return () => observer.disconnect();
-  }, []);
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          setActive(e.target.id);
+          e.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: "-60px 0px -10% 0px" }
+  );
+  document.querySelectorAll("section[id]").forEach((s) => observer.observe(s));
+  return () => observer.disconnect();
+}, []);
 
   return (
-    <div>
+    <div className={presenting ? "presenting" : ""}>
       <CustomCursor />
       <CyberBg />
-      <Nav
-        active={active}
-        extra={<ThemeToggle dark={dark} onToggle={toggleTheme} />}
-      />
+      {!presenting && (
+        <Nav active={active} extra={
+          <>
+            <button
+              className="btn-present"
+              onClick={() => setPresenting(true)}
+              title="Modo apresentação (F9)"
+            >
+              ▶
+            </button>
+            <ThemeToggle dark={dark} onToggle={toggleTheme} />
+          </>
+        }/>
+      )}
       <Hero />
       <About />
       <Skills />
       <Projects />
       <Contact />
-      <Footer />
-      <ScrollToTop />
+      {!presenting && <Footer />}
+      {!presenting && <ScrollToTop />}
+      {presenting && (
+        <button className="btn-exit-present" onClick={() => setPresenting(false)}>
+          ✕ SAIR DO MODO APRESENTAÇÃO
+        </button>
+      )}
     </div>
   );
 }
