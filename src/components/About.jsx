@@ -64,7 +64,7 @@ export default function About() {
         <div className="about-grid">
           <div className="about-text">
             <p>
-              Sou <span className="hl">Cláudio Souza</span>, desenvolvedor
+              Sou <span className="hl">José Claudio</span>, desenvolvedor
               Full Stack de São Paulo. Comecei minha jornada na tecnologia
               em 2025 pelo Técnico em Informática e desde então não parei
               — já entreguei <span className="hl">4 projetos reais</span>,

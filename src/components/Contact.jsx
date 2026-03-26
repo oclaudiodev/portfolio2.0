@@ -32,7 +32,7 @@ export default function Contact() {
   setTimeout(() => {
     const subject = encodeURIComponent(`Contato via Portfólio — ${form.name}`);
     const body    = encodeURIComponent(
-      `Olá Cláudio,\n\nMeu nome é ${form.name} (${form.email}).\n\n${form.msg}`
+      `Olá Claudio,\n\nMeu nome é ${form.name} (${form.email}).\n\n${form.msg}`
     );
     window.open(
       `https://mail.google.com/mail/?view=cm&fs=1&to=7claudiosouza@gmail.com&su=${subject}&body=${body}`,
@@ -92,7 +92,7 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  placeholder="Olá Cláudio, gostaria de..."
+                  placeholder="Olá Claudio, gostaria de..."
                   className="field-input field-textarea"
                 />
               </div>

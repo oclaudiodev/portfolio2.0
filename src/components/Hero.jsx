@@ -98,7 +98,7 @@ export default function Hero() {
           <h1 className={cx("hero-title")} style={{ animationDelay: "0.3s" }}>
             <span className="title-line1">Olá, eu sou</span>
             <br />
-            <GlitchText text="Claudio Souza" className="title-name" />
+            <GlitchText text="José Claudio" className="title-name" />
           </h1>
 
           <p className={cx("hero-role")} style={{ animationDelay: "0.5s" }}>
@@ -153,7 +153,7 @@ export default function Hero() {
             <div className="hex-inner">
               <img
                 src="/claudin.png"
-                alt="Cláudio Souza"
+                alt="udio Souza"
                 onLoad={(e) => {
                   e.target.style.display = "block";
                   e.target.nextSibling.style.display = "none";
