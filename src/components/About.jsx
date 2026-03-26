@@ -18,10 +18,16 @@ const TIMELINE = [
     desc: "Análise e Desenvolvimento de Sistemas, aprofundando arquitetura de software e boas práticas.",
   },
   {
-    year: "2026",
-    title: "Database Design & Foundations — Cursando EAD",
-    place: "Oracle Academy",
-    desc: "Modelagem de dados, normalização, SQL avançado e design de banco de dados relacional.",
+    "year": "2026",
+    "title": "Database Design",
+    "place": "Oracle Academy",
+    "desc": "Conceitos de modelagem de dados, criação de diagramas entidade-relacionamento (ER), normalização e boas práticas no design de bancos de dados relacionais."
+  },
+  {
+    "year": "2026",
+    "title": "Database Foundations — Cursando EAD",
+    "place": "Oracle Academy",
+    "desc": "Fundamentos de bancos de dados, incluindo conceitos básicos, SQL (consultas, joins, agregações) e introdução ao gerenciamento de dados."
   },
   {
     year: "2026",
@@ -31,7 +37,7 @@ const TIMELINE = [
   },
   {
     year: "2026",
-    title: "Inteligência Artificial — Cursando EAD",
+    title: "Inteligência Artificial",
     place: "SymplaPlay",
     desc: "Automação com Zapier, análise de dados com Power BI e criação de aplicativos com Glide.",
   },
