@@ -8,14 +8,14 @@ export default function Footer() {
       <div className="footer-inner">
         <div className="footer-logo">
           <span className="logo-bracket">[</span>
-          <GlitchText text="JOSÉ CLAUDIO" />
+          <GlitchText text="oclaudiodev" />
           <span className="logo-bracket">]</span>
         </div>
 
         <VisitCounter />
 
         <p className="footer-copy">
-          © {new Date().getFullYear()} udio Souza
+          © {new Date().getFullYear()} José Claudio
         </p>
 
         <p className="footer-made">Made with React ⚛</p>

@@ -24,7 +24,7 @@ export default function Nav({ active, extra }) {
       <nav className="cyber-nav">
         <div className="nav-logo">
           <span className="logo-bracket">[</span>
-          <GlitchText text="J.CLAUDIO" />
+          <GlitchText text="oclaudiodev" />
           <span className="logo-bracket">]</span>
         </div>
 
