@@ -22,6 +22,7 @@ export default function Loader({ onDone }) {
             setVisible(false);
             setTimeout(onDone, 600);
           }, 400);
+          return i;
         }
         return i + 1;
       });
@@ -37,7 +38,7 @@ export default function Loader({ onDone }) {
       <div className="loader-inner">
         <div className="loader-logo">
           <span className="loader-bracket">[</span>
-          <span className="loader-cs">CS</span>
+          <span className="loader-cs">oclaudiodev</span>
           <span className="loader-bracket">]</span>
         </div>
 
