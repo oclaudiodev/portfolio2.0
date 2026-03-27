@@ -152,7 +152,7 @@ export default function Hero() {
             <div className="hex-border" />
             <div className="hex-inner">
               <img
-                src="/claudin.png"
+                src="/claudioftPro.png"
                 alt="udio Souza"
                 onLoad={(e) => {
                   e.target.style.display = "block";
